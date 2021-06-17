@@ -1,5 +1,3 @@
-
-
 Get Started with z-Tran
 ================
 z-Tran is a MATLAB toolbox that implements the analytic policy function iteration (APFI) algorithm of [Han, Tan and Wu (2021)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3512320) for solving dynamic incomplete information models. All of the routines are coded in MATLAB as object-oriented programs. However, z-Tran does not require the user to have any prior knowledge of object-oriented programming. Indeed, it is quite intuitive to use as you will quickly realize when running our demo code. For any issue, suggestion or bug report, please send an email to [tanf AT slu.edu](tanf@slu.edu)
@@ -16,7 +14,7 @@ As is common in most numerical procedures, the algorithm convergence depends on 
 
 Replication Files
 -----
-To initialize the toolbox, set MATLAB directory to the "z-Tran" folder and call **startup** at the command line, which will display the general information about z-Tran and add all relevant folders to MATLAB search path. The "examples" folder contains the following subfolders of user files for solving the models considered in [Han, Tan and Wu (2021)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3512320):
+To initialize the toolbox, set MATLAB directory to the "ztran-main" folder and call **startup** at the command line, which will display the general information about z-Tran and add all relevant folders to MATLAB search path. The "examples" folder contains the following subfolders of user files for solving the models considered in [Han, Tan and Wu (2021)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3512320):
 
 * **Ex1_asset** - solves the asset pricing model in Section 2.
 
