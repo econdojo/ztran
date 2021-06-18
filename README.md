@@ -14,7 +14,7 @@ As is common in most numerical procedures, the algorithm convergence depends on 
 
 Replication Files
 -----
-To initialize the toolbox, set MATLAB directory to the "ztran-main" folder and call **startup** at the command line, which will display the general information about z-Tran and add all relevant folders to MATLAB search path. The "examples" folder contains the following subfolders of user files for solving the models considered in [Han, Tan and Wu (2021)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3512320):
+To initialize z-Tran, set MATLAB directory to the toolbox's master folder and call **startup** at the command line, which will display the general information about z-Tran and add all relevant folders to MATLAB search path. The "examples" folder contains the following subfolders of user files for solving the models considered in [Han, Tan and Wu (2021)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3512320):
 
 * **Ex1_asset** - solves the asset pricing model in Section 2.
 
