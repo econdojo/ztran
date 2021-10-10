@@ -112,7 +112,7 @@ while AllDiff >ITERATE_ACCURACY
        Sig(2,1,k) = Rkz(1,1,k);
    end
    
-   Sig_arma = varma.fit(z,Sig,p,q);
+   Sig_arma = varma.fit(z,Sig,p,q,true);
    
    % Find Wold representation using state space method, evaluated at z =
    % beta
@@ -129,7 +129,7 @@ while AllDiff >ITERATE_ACCURACY
     Gammaz_beta(:,:,1) = pinv(eye(2)+SSR.H*pinv(eye(ns)-SSR.F*beta)*SSR.K*beta);
     
     % Compute Signal Representation of Expectation and Solve for Constants
-    Rkz_arma = varma.fit(z,Rkz,p,q);
+    Rkz_arma = varma.fit(z,Rkz,p,q,true);
     [~,Erz] = wh(z,1,Sig_arma,Rkz_arma,V,400); %Expand DFT around 400 points to ensure accuracy
     [~,Rke_beta] =  wh(beta,1,Sig_arma,Rkz_arma,V,400);  %Evaluate expectation of r_{kt+1} at z =beta
     
@@ -184,12 +184,12 @@ toc
 
 % MA expansion of aggregate consumption and capital return
 PERIODS = 100;
-c2 = varma.fit(z,Cz,p,q);
-r2 = varma.fit(z,Rkz(:,1,:),p,q);
+c2 = varma.fit(z,Cz,p,q,true);
+r2 = varma.fit(z,Rkz(:,1,:),p,q,true);
 imp = zeros(1,PERIODS);
 imp(1) = 1;
-res_c = irf(c2,imp,1e-4);
-res_r = irf(r2,imp,1e-4);
+res_c = irf(c2,imp);
+res_r = irf(r2,imp);
 
 figure 
 subplot(1,2,1)

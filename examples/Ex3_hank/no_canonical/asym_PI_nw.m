@@ -76,7 +76,7 @@ for k = 1:nz
     rz(:,1,k) = 1/(1-rho_r*z(k));
 end
 
-rz_arma = varma.fit(z,rz,p,q);
+rz_arma = varma.fit(z,rz,p,q,true);
 
 % Information set options
 
@@ -104,7 +104,7 @@ while AllDiff >ITERATE_ACCURACY
        Sig_1(2,2,k) = Cz(:,2,k)+1/(1-rho_m*z(k));
    end
    
-   Sig1_arma = varma.fit(z,Sig_1,p,q);
+   Sig1_arma = varma.fit(z,Sig_1,p,q,true);
    
    Sig_2 = zeros(1,ne,nz);
   
@@ -113,7 +113,7 @@ while AllDiff >ITERATE_ACCURACY
        Sig_2(1,3,k) = 1;
    end
    
-   Sig2_arma = varma.fit(z,Sig_2,p,q);
+   Sig2_arma = varma.fit(z,Sig_2,p,q,true);
    
    end
    
@@ -123,7 +123,7 @@ while AllDiff >ITERATE_ACCURACY
     predox_Cz = zeros(nx,ne,nz);
     predox_Cz(1,1:2,:) = Cz; % aggregate component
     
-    preCz_arma = varma.fit(z,predox_Cz,p,q);
+    preCz_arma = varma.fit(z,predox_Cz,p,q,true);
    
 
     Ecz_1 = zeros(nx,ne,nz); % Group 1 expectations of aggregate consumption (output), no need to multiply mass here
@@ -206,13 +206,13 @@ toc
 % MA expansion of aggregate consumption 
 % Minimum level of IRF on display is set to 1e-4;
 PERIODS = 50;
-c2 = varma.fit(z,Cz,p,q);
+c2 = varma.fit(z,Cz,p,q,true);
 imp = zeros(2,PERIODS);
 imp(1,1) = -1;
-C_agg_1 = irf(c2,imp,1e-4);
+C_agg_1 = irf(c2,imp);
 imp = zeros(2,PERIODS);
 imp(2,1) = -1;
-C_agg_2 = irf(c2,imp,1e-4);
+C_agg_2 = irf(c2,imp);
 
 % Full information initial impact for normalization in figure plot, if
 % change parameters, always run full-information equilibrium first

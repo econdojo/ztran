@@ -76,7 +76,7 @@ for k = 1:nz
     rz(:,1,k) = 1/(1-rho_r*z(k));
 end
 
-rz_arma = varma.fit(z,rz,p,q);
+rz_arma = varma.fit(z,rz,p,q,true);
 
 % Information set options
 
@@ -104,7 +104,7 @@ while AllDiff >ITERATE_ACCURACY
        Sig_1(2,2,k) = Cz(:,2,k)+1/(1-rho_m*z(k));
    end
    
-   Sig1_arma = varma.fit(z,Sig_1,p,q);
+   Sig1_arma = varma.fit(z,Sig_1,p,q,true);
    
    Sig_2 = zeros(1,ne,nz);
   
@@ -113,7 +113,7 @@ while AllDiff >ITERATE_ACCURACY
        Sig_2(1,3,k) = 1;
    end
    
-   Sig2_arma = varma.fit(z,Sig_2,p,q);
+   Sig2_arma = varma.fit(z,Sig_2,p,q,true);
    
    end
    
@@ -123,7 +123,7 @@ while AllDiff >ITERATE_ACCURACY
     predox_Cz = zeros(nx,ne,nz);
     predox_Cz(1,1:2,:) = Cz; % aggregate component
     
-    preCz_arma = varma.fit(z,predox_Cz,p,q);
+    preCz_arma = varma.fit(z,predox_Cz,p,q,true);
 
     Ecz_1 = zeros(nx,ne,nz); % Group 1 expectations of aggregate consumption (output), no need to multiply mass here
    
@@ -214,13 +214,13 @@ toc
 % Plot IRF of Solution
 % MA expansion of aggregate consumption 
 PERIODS = 50;
-c2 = varma.fit(z,Cz,p,q);
+c2 = varma.fit(z,Cz,p,q,true);
 imp = zeros(2,PERIODS);
 imp(1,1) = -1;
-C_agg_1 = irf(c2,imp,1e-4);
+C_agg_1 = irf(c2,imp);
 imp = zeros(2,PERIODS);
 imp(2,1) = -1;
-C_agg_2 = irf(c2,imp,1e-4);
+C_agg_2 = irf(c2,imp);
 
 % Full information initial impact for normalization in figure plot, if
 % change parameters, always run full-information equilibrium first
@@ -236,16 +236,16 @@ C_agg_2 = C_agg_2/C_full_impact_4;
 
 % Minimum level of IRF on display is set to 1e-4; for noise shock the
 % impact for saving is negligible
-s1 = varma.fit(z,S_1z,p,q);
-s2 = varma.fit(z,S_2z,p,q);
+s1 = varma.fit(z,S_1z,p,q,true);
+s2 = varma.fit(z,S_2z,p,q,true);
 imp = zeros(2,PERIODS);
 imp(1,1) = -1;
-S1_agg_1 = irf(s1,imp,1e-4)/C_full_impact_4;
-S2_agg_1 = irf(s2,imp,1e-4)/C_full_impact_4;
+S1_agg_1 = irf(s1,imp)/C_full_impact_4;
+S2_agg_1 = irf(s2,imp)/C_full_impact_4;
 imp = zeros(2,PERIODS);
 imp(2,1) = -1;
-S1_agg_2 = irf(s1,imp,1e-4)/C_full_impact_4;
-S2_agg_2 = irf(s2,imp,1e-4)/C_full_impact_4;
+S1_agg_2 = irf(s1,imp)/C_full_impact_4;
+S2_agg_2 = irf(s2,imp)/C_full_impact_4;
 
 
 

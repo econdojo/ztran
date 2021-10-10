@@ -1,13 +1,12 @@
-function res = irf(obj,imp,crit)
+function res = irf(obj,imp)
 % Function IRF
 %
 % Purpose:    Simulate VARMA impulse response function
 %
-% Format:     res = irf(obj,imp)
+% Format:     res = irf(obj,imp,crit)
 %
 % Input:      obj       varma object
 %             imp(:,t)  impulse at period t
-%             crit      criterion for nonzero responses
 %
 % Output:     res(:,t)  response at period t
 %
@@ -19,9 +18,6 @@ function res = irf(obj,imp,crit)
 %---------------------------------------------
 
 % Initialization
-if nargin<3
-    crit = 1e-5;
-end
 p = length(obj.AR);
 q = length(obj.MA)-1;
 [m,n] = size(obj.MA{1});
@@ -41,6 +37,6 @@ for k = 1:N
     
 end
 res = res(:,p+1:end);
-res(abs(res)<crit) = 0;
+res(abs(res)<1e-6) = 0;
 
 %-------------------- END --------------------

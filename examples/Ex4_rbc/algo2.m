@@ -130,7 +130,7 @@ while AllDiff >ITERATE_ACCURACY
        Sig(2,1,k) = Rkz(1,1,k);
    end
    
-   Sig_arma = varma.fit(z,Sig,p,q);
+   Sig_arma = varma.fit(z,Sig,p,q,true);
    
   % Find Wold representation using state space method, and compute
   % endogenous function F(z)
@@ -149,7 +149,7 @@ while AllDiff >ITERATE_ACCURACY
       Gammaz(:,:,k) = eye(2)+SSR.H/(eye(ns)-SSR.F*z(k))*SSR.K*z(k);
   end
   
-  Fz_arma = varma.fit(z,Fz,p,q);
+  Fz_arma = varma.fit(z,Fz,p,q,true);
   Fz_r2 = eval(r_2,Fz_arma);  % F(z) evaluated at z = r_2
   Fz_beta = eval(beta,Fz_arma); % F(z) evaluated at z = beta
   Fz_1 = eval(1,Fz_arma);  % F(z) evaluated at z = 1
@@ -216,12 +216,12 @@ end
 
 % MA expansion of aggregate consumption and capital return
 PERIODS = 100;
-c2 = varma.fit(z,Cz,p,q);
-r2 = varma.fit(z,Rkz(:,1,:),p,q);
+c2 = varma.fit(z,Cz,p,q,true);
+r2 = varma.fit(z,Rkz(:,1,:),p,q,true);
 imp = zeros(1,PERIODS);
 imp(1) = 1;
-res_c = irf(c2,imp,1e-4);
-res_r = irf(r2,imp,1e-4);
+res_c = irf(c2,imp);
+res_r = irf(r2,imp);
 
 figure 
 subplot(1,2,1)

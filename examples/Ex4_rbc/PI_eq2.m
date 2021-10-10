@@ -141,12 +141,12 @@ q=5;
 
 % Plot IRF of closed-form solution
 PERIODS = 100;
-c2 = varma.fit(z,ccz,p,q);
-r2 = varma.fit(z,rrz,p,q);
+c2 = varma.fit(z,ccz,p,q,true);
+r2 = varma.fit(z,rrz,p,q,true);
 imp = zeros(1,PERIODS);
 imp(1) = 1;
-res_c = irf(c2,imp,1e-4);
-res_r = irf(r2,imp,1e-4);
+res_c = irf(c2,imp);
+res_r = irf(r2,imp);
 
 figure 
 subplot(1,2,1)

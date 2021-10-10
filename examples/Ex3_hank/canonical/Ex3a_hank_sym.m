@@ -157,8 +157,8 @@ m.V = V;
 m.agg = agg;
 m.sig = sig;
 
-m = solve(m,'disp',10,'dft',500,'crit',1e-8,'nit',[10 2000],'step',1,...
-    'arma', [3 3]);
+m = solve(m,'dft',500,'crit',1e-8,'nit',{10,2000,10},'step',1,...
+    'arma', {3,3,false});
 
 % IRFs
 T = 40;
@@ -170,7 +170,11 @@ figure('Name','IRF')
 for i = 1:ne
     imp = zeros(ne,T);
     imp(i,1) = -1;
-    res = irf(m.sol,imp,1e-4);
+    res = irf(m.sol,imp);
+    res(abs(res)<1e-5) = 0; 
+    if ismember(i,setdiff(1:ne,agg{2}))
+        res(agg{1},:) = 0;
+    end
     for j = 1:nx
         subplot(ne,nx,(i-1)*nx+j)
         plot(1:T,res(j,:),'linewidth',1.2)

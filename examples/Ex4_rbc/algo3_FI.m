@@ -104,10 +104,10 @@ while AllDiff >ITERATE_ACCURACY
     end
     
     % Compute expectation
-    Cz_arma = varma.fit(z,Cz,p,q);
+    Cz_arma = varma.fit(z,Cz,p,q,true);
     [Ecz,~] = wh(z,1,varma({0},{1}),Cz_arma,sig_a^2,350);   % Et(ct+1)
     
-    Rkz_arma = varma.fit(z,Rkz,p,q);
+    Rkz_arma = varma.fit(z,Rkz,p,q,true);
     [Erz,~] = wh(z,1,varma({0},{1}),Rkz_arma,sig_a^2,350);
     
     EEz = zeros(nx,ne,nz);  % Euler equation error
@@ -144,12 +144,12 @@ toc
 
 % MA expansion of aggregate consumption and capital return
 PERIODS = 100;
-c2 = varma.fit(z,Cz,p,q);
-r2 = varma.fit(z,Rkz(:,1,:),p,q);
+c2 = varma.fit(z,Cz,p,q,true);
+r2 = varma.fit(z,Rkz(:,1,:),p,q,true);
 imp = zeros(1,PERIODS);
 imp(1) = 1;
-res_c = irf(c2,imp,1e-4);
-res_r = irf(r2,imp,1e-4);
+res_c = irf(c2,imp);
+res_r = irf(r2,imp);
 
 figure 
 subplot(1,2,1)

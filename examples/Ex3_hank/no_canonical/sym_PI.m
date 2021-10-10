@@ -69,7 +69,7 @@ for k = 1:nz
     rz(:,1,k) = 1/(1-rho_r*z(k));
 end
 
-rz_arma = varma.fit(z,rz,p,q);
+rz_arma = varma.fit(z,rz,p,q,true);
 
 % Model and Information set options
 
@@ -95,7 +95,7 @@ while AllDiff >ITERATE_ACCURACY
        Sig(1,2,k) = 1;
    end
    
-   Sig_arma = varma.fit(z,Sig,p,q);
+   Sig_arma = varma.fit(z,Sig,p,q,true);
    end
    
    
@@ -104,7 +104,7 @@ while AllDiff >ITERATE_ACCURACY
     predox_Cz = zeros(nx,ne,nz);
     predox_Cz(1,1,:) = Cz; % aggregate component
     
-    preCz_arma = varma.fit(z,predox_Cz,p,q);
+    preCz_arma = varma.fit(z,predox_Cz,p,q,true);
    
 
     Ecz_1 = zeros(nx,ne,nz); % Group 1 expectations of aggregate consumption (output), no need to multiply mass here
@@ -198,10 +198,10 @@ toc
 % Plot IRF of Solution
 % MA expansion of aggregate consumption 
 PERIODS = 50;
-c2 = varma.fit(z,Cz,p,q);
+c2 = varma.fit(z,Cz,p,q,true);
 imp = zeros(1,PERIODS);
 imp(1) = -1;
-res_c = irf(c2,imp,1e-4);
+res_c = irf(c2,imp);
 
 % Full information initial impact for normalization in figure plot, if
 % change parameters, always run full-information equilibrium first
@@ -227,10 +227,10 @@ if wealthdynamics == 1
 end
 
 if wealthdynamics == 1
-s1 = varma.fit(z,S_1z,p,q);
-res_s1 = irf(s1,imp,1e-4)/C_full_impact_2;
-s2 = varma.fit(z,S_2z,p,q);
-res_s2 = irf(s2,imp,1e-4)/C_full_impact_2;
+s1 = varma.fit(z,S_1z,p,q,true);
+res_s1 = irf(s1,imp)/C_full_impact_2;
+s2 = varma.fit(z,S_2z,p,q,true);
+res_s2 = irf(s2,imp)/C_full_impact_2;
 end
     
 

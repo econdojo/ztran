@@ -131,7 +131,7 @@ while AllDiff >ITERATE_ACCURACY
        Sig(2,1,k) = Rkz(1,1,k);
    end
    
-   Sig_arma = varma.fit(z,Sig,p,q);
+   Sig_arma = varma.fit(z,Sig,p,q,true);
    
    % Compute signal representation of expectation
     
@@ -139,10 +139,10 @@ while AllDiff >ITERATE_ACCURACY
     predox_Cz(1,1,:) = Cz; % aggregate component
     predox_Cz(1,2,:) = Ciz;
     
-    preCz_arma = varma.fit(z,predox_Cz,p,q);
+    preCz_arma = varma.fit(z,predox_Cz,p,q,true);
     [~,Ecz] = wh(z,1,Sig_arma, preCz_arma,V,550); % Expand DFT around 550 points to ensure accuracy
 
-    Rkz_arma = varma.fit(z,Rkz,p,q);
+    Rkz_arma = varma.fit(z,Rkz,p,q,true);
     [~,Erz] = wh(z,1,Sig_arma,Rkz_arma,V,550); 
     
     % Updating 
@@ -181,12 +181,12 @@ toc
 
 % MA expansion of aggregate consumption and capital return
 PERIODS = 100;
-c2 = varma.fit(z,Cz,p,q);
-r2 = varma.fit(z,Rkz(:,1,:),p,q);
+c2 = varma.fit(z,Cz,p,q,true);
+r2 = varma.fit(z,Rkz(:,1,:),p,q,true);
 imp = zeros(1,PERIODS);
 imp(1) = 1;
-res_c = irf(c2,imp,1e-4);
-res_r = irf(r2,imp,1e-4);
+res_c = irf(c2,imp);
+res_r = irf(r2,imp);
 
 figure 
 subplot(1,2,1)

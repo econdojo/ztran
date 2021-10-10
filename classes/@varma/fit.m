@@ -1,14 +1,16 @@
-function obj = fit(z,fz,p,q)
+function obj = fit(z,fz,p,q,or)
 % Function FIT
 %
-% Purpose:    Fit VARMA representation to data points
+% Purpose:    Fit joint VARMA representation to data points (note: fit separate 
+%             VARMA's for aggregate & individual variables to improve accuracy)
 %
 % Format:     obj = varma.fit(z,fz,p,q)
 %
 % Input:      z(k)      point of evaluation
 %             fz(:,:,k) VARMA representation evaluated at z(k)
-%             p         VAR max order
-%             q         VMA max order
+%             p         VAR order
+%             q         VMA order
+%             or        order reduction for stationarity (logical)
 %
 % Output:     obj       varma object
 %
@@ -48,13 +50,13 @@ while true
     [U,S,V] = svdc(G0);
     x = (V/S*U'*G1)';
     
-    if p>1
+    if p>1 && or
         A = [x(:,1:(p*m));eye((p-1)*m) zeros((p-1)*m,m)];
     else
         break
     end
     
-    if any(abs(eig(A))>1)
+    if any(abs(eig(A))>1)    % stationarity test
         p = p-1;
         if q>0
             q = q-1;

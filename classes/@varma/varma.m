@@ -48,6 +48,6 @@ classdef varma
     
     methods (Static)
         % Fit VARMA representation to data points
-        obj = fit(z,fz,p,q)
+        obj = fit(z,fz,p,q,or)
     end
 end

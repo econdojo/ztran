@@ -10,12 +10,11 @@ function obj = solve(obj,varargin)
 %                       'apf'     - {z(k), fz(:,:,k)}
 %                                   z(:) points of evaluation in (-1,1)
 %                                   fz(:,:,:) initial function values
-%                       'nit'     - min & max numbers of iterations ([10 100])
+%                       'nit'     - {min_iter, max_iter, disp_iter} ({10, 100, 0})
 %                       'crit'    - convergence criterion (1e-5)
 %                       'dft'     - number of DFT points (5000)
-%                       'arma'    - VARMA max orders ([5 5])
+%                       'arma'    - {AR order, MA order, reduction} ({5, 5, false})
 %                       'step'    - step size (1)
-%                       'disp'    - display info every several iters (0)
 %
 % Output:     obj       updated ztran object
 %
@@ -41,12 +40,10 @@ obj.retcode = 2;
 z = linspace(-0.99,0.99,50);
 nz = length(z);
 fz = zeros(nx,ne,nz);
-nit1 = 10;
-nit2 = 1000;
-nit3 = 0;
+nit1 = 10; nit2 = 1000; nit3 = 0;
 crit = 1e-6;
 N = 1000;
-p = 5; q = 5;
+p = 5; q = 5; or = false;
 step = 1;
 
 narg = length(varargin);
@@ -56,12 +53,11 @@ for k = 1:2:narg
             if any(fz(obj.agg{1},ind_inn,:),'all')
                 error('fz must be 0 for aggregate variables w.r.t. individual innovations.')
             end
-        case 'nit', nit1 = varargin{k+1}(1); nit2 = varargin{k+1}(2);
+        case 'nit', nit1 = varargin{k+1}{1}; nit2 = varargin{k+1}{2}; nit3 = varargin{k+1}{3};
         case 'crit', crit = varargin{k+1};
         case 'dft', N = varargin{k+1}; % N ~ 2*log(1e-5)/log(max_root)
-        case 'arma', p = varargin{k+1}(1); q = varargin{k+1}(2);
+        case 'arma', p = varargin{k+1}{1}; q = varargin{k+1}{2}; or = varargin{k+1}{3};
         case 'step', step = varargin{k+1};
-        case 'disp', nit3 = varargin{k+1};
         otherwise
             error('Unrecognized optional argument.')
     end
@@ -103,8 +99,8 @@ for iter = 1:nit2
     
     % Expected (x,a,s)
     for j = 1:nex
-        sigx = varma.fit(z,Lx(obj.sig{j,2},:,:,1),p,q);    % endogenous signal
-        sigs = varma.fit(z,Ls(obj.sig{j,3},:,:,1),p,q);    % exogenous signal
+        sigx = varma.fit(z,Lx(obj.sig{j,2},:,:,1),p,q,or); % endogenous signal
+        sigs = varma.fit(z,Ls(obj.sig{j,3},:,:,1),p,q,or); % exogenous signal
         sig = sigx+sigs;     % joint signal
         if isempty(sig.MA)   % complete info
             sig = varma({zeros(ne)},{eye(ne)});
@@ -112,7 +108,7 @@ for iter = 1:nit2
         
         for k = 1:hx
             if any(obj.Bx{k}(obj.sig{j,1},:))
-                predx = varma.fit(z,Lx(obj.Bx{k}(obj.sig{j,1},:)~=0,:,:,1),p,q);
+                predx = varma.fit(z,Lx(obj.Bx{k}(obj.sig{j,1},:)~=0,:,:,1),p,q,or);
                 [Ex(obj.Bx{k}(obj.sig{j,1},:)~=0,:,:,k,j),~] = wh(z,k-1,sig,predx,obj.V,N);
                 if obj.sig{j,4}   % average expectation
                     Ex(obj.Bx{k}(obj.sig{j,1},:)~=0,ind_inn,:,k,j) = 0;
@@ -124,7 +120,7 @@ for iter = 1:nit2
             if any(obj.Ba{k}(obj.sig{j,1},:))
                 La = Lx(obj.Ba{k}(obj.sig{j,1},:)~=0,:,:,1);
                 La(:,ind_inn,:) = 0;
-                preda = varma.fit(z,La,p,q);
+                preda = varma.fit(z,La,p,q,or);
                 [Ea(obj.Ba{k}(obj.sig{j,1},:)~=0,:,:,k,j),~] = wh(z,k-1,sig,preda,obj.V,N);
                 if obj.sig{j,4}
                     Ea(obj.Ba{k}(obj.sig{j,1},:)~=0,ind_inn,:,k,j) = 0;
@@ -134,7 +130,7 @@ for iter = 1:nit2
         
         for k = 1:hs
             if any(obj.Bs{k}(obj.sig{j,1},:))
-                preds = varma.fit(z,Ls(obj.Bs{k}(obj.sig{j,1},:)~=0,:,:,1),p,q);
+                preds = varma.fit(z,Ls(obj.Bs{k}(obj.sig{j,1},:)~=0,:,:,1),p,q,or);
                 [Es(obj.Bs{k}(obj.sig{j,1},:)~=0,:,:,k,j),~] = wh(z,k-1,sig,preds,obj.V,N);
                 if obj.sig{j,4}
                     Es(obj.Bs{k}(obj.sig{j,1},:)~=0,ind_inn,:,k,j) = 0;
@@ -207,7 +203,7 @@ end
 
 % Output
 obj.apf = {z(:),fz};
-obj.sol = varma.fit(z,fz,p,q);
+obj.sol = varma.fit(z,fz,p,q,or);
 
 if nit3
     switch obj.retcode
