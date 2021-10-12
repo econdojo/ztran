@@ -7,9 +7,9 @@ close all
 clc 
 
 % Parameters
-alpha = 0.90;
+alpha = 0.50;
 rho = 0.90;
-tau = 1;
+tau = 0.25;
 kappa = 10; 
 
 % Variables
@@ -78,7 +78,7 @@ V(ev,ev) = 1/kappa;
 
 agg = {xp_lag,ee};          % {var_id, inn_id}
 sig = {
-    1, xp_lag, ss, false    % {eqn_id, end_id, exo_id, ave_ex}
+    1, xzi, ss, false    % {eqn_id, end_id, exo_id, ave_ex}
     };
 
 % Solve model
