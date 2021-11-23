@@ -1,6 +1,6 @@
 Get Started with z-Tran
 ================
-z-Tran is a MATLAB toolbox that implements the analytic policy function iteration (APFI) algorithm of [Han, Tan and Wu (2021)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3512320) for solving dynamic incomplete information models. All of the routines are coded in MATLAB as object-oriented programs. However, z-Tran does not require the user to have any prior knowledge of object-oriented programming. Indeed, it is quite intuitive to use as you will quickly realize when running our demo code. For any issue, suggestion or bug report, please send an email to [tanf [at] slu.edu](tanf@slu.edu)
+z-Tran is a MATLAB toolbox that implements the analytic policy function iteration (APFI) algorithm of [Han, Tan and Wu (2021)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3512320) for solving dynamic incomplete information models. All of the routines are coded in MATLAB as object-oriented programs. However, z-Tran does not require the user to have any prior knowledge of object-oriented programming. Indeed, it is quite intuitive to use as you will quickly realize when running our demo code. For any issue, suggestion or bug report, please send an email to [tanf [at] slu.edu](tanf@slu.edu).
 
 Toolbox Structure
 -----------------------------------
@@ -10,7 +10,7 @@ z-Tran consists of two classes defined under the "classes" folder: @varma (for *
 
 2. The class definition file **ztran.m** encapsulates the model inputs (including the equilibrium equations, variable-innovation structure, and information structure) and its solving routine via a model-type object.
 
-As is common in most numerical procedures, the algorithm convergence depends on many factors, e.g., the structure and stability of the model, the initial conjecture, the updating steps, the convergence criteria, etc. In the toolbox, we list a number of options that users can specify in the main interface **solve.m** to improve the numerical efficiency and stability. Alternatively, users can also construct their own code based on the APFI framework. Instead of using the canonical form and z-Tran interface, users call the individual routines under the "@varma" folder whenever is needed. This feature may be appealing in some complicated models when users need to monitor the iteration process to identify potential problems. See Appendix C of [Han, Tan and Wu (2021)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3512320) for a practical user guide.
+As is common in most numerical procedures, the algorithm convergence depends on many factors, e.g., the structure and stability of the model, the initial conjecture, the updating steps, the convergence criteria, etc. In the toolbox, we list a number of options that users can specify in the main interface **solve.m** to improve the numerical efficiency and stability. Alternatively, users can also construct their own code based on the APFI framework. Instead of using the canonical form and z-Tran interface, users call the individual routines under the "@varma" folder whenever is needed. This feature may be appealing in some complicated models when users need to monitor the iteration process to identify potential problems. See Online Appendix S3 of [Han, Tan and Wu (2021)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3512320) for a practical user guide.
 
 Replication Files
 -----
@@ -28,6 +28,6 @@ To initialize z-Tran, set MATLAB directory to the toolbox's master folder and ca
 
 References
 ---------------------
-Han, Z., F. Tan, and J. Wu (2021): “Analytic Policy Function Iteration,” Working Paper.
+Han, Z., F. Tan, and J. Wu (2021): “Analytic Policy Function Iteration,” *Journal of Economic Theory*.
 
 Huo, Z., and M. Pedroni (2020): “Dynamic Information Aggregation: Learning from the Past,” Working Paper.
