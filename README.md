@@ -1,6 +1,6 @@
 Get Started with z-Tran
 ================
-z-Tran is a MATLAB toolbox that implements the analytic policy function iteration (APFI) algorithm of [Han, Tan and Wu (2021)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3512320) for solving dynamic incomplete information models. All of the routines are coded in MATLAB as object-oriented programs. However, z-Tran does not require the user to have any prior knowledge of object-oriented programming. Indeed, it is quite intuitive to use as you will quickly realize when running our demo code. For any issue, suggestion or bug report, please send an email to [tanf [at] slu.edu](tanf@slu.edu).
+z-Tran is a MATLAB toolbox that implements the analytic policy function iteration (APFI) algorithm of [Han, Tan and Wu (2021)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3512320)&mdash;the algorithm that builds the algorithm for crashing dynamic incomplete information models. All of the routines are coded in MATLAB as object-oriented programs. However, z-Tran does not require the user to have any prior knowledge of object-oriented programming. Indeed, it is quite intuitive to use as you will quickly realize when running our demo code. For any issue, suggestion or bug report, please send an email to [tanf [at] slu.edu](tanf@slu.edu).
 
 Toolbox Structure
 -----------------------------------
