@@ -26,6 +26,10 @@ To initialize z-Tran, set MATLAB directory to the toolbox's master folder and ca
 
 * **Ex5_confounding** - solves the beauty contest model in Section 2 of [Huo and Pedroni (2020)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3687529).
 
+Acknowledgments
+-----
+We thank Zhao Han and Zheliang Zhu for testing z-Tran on various models and providing user feedback.
+
 References
 ---------------------
 Tan, F., and J. Wu (2021): “Analytic Policy Function Iteration,” *Journal of Economic Theory*.
