@@ -1,6 +1,6 @@
 Get Started with z-Tran
 ================
-z-Tran is a MATLAB toolbox that implements the analytic policy function iteration (APFI) algorithm of [Tan and Wu (2021)](https://econdojo.github.io/assets/papers/APFI_RX.pdf)&mdash;the algorithm that builds the algorithm for solving dynamic incomplete information models. All of the routines are coded in MATLAB as object-oriented programs. However, z-Tran does not require the user to have any prior knowledge of object-oriented programming. Indeed, it is quite intuitive to use as you will quickly realize when running our demo code. For any issue, suggestion or bug report, please send an email to [tanf [at] slu.edu](tanf@slu.edu).
+z-Tran is a MATLAB toolbox that implements the analytic policy function iteration (APFI) algorithm of [Tan and Wu (2021)](https://doi.org/10.1016/j.jet.2021.105395)&mdash;the algorithm that builds the algorithm for solving dynamic incomplete information models. All of the routines are coded in MATLAB as object-oriented programs. However, z-Tran does not require the user to have any prior knowledge of object-oriented programming. Indeed, it is quite intuitive to use as you will quickly realize when running our demo code. For any issue, suggestion or bug report, please send an email to [tanf [at] slu.edu](tanf@slu.edu).
 
 Toolbox Structure
 -----------------------------------
@@ -29,6 +29,10 @@ To initialize z-Tran, set MATLAB directory to the toolbox's master folder and ca
 Acknowledgments
 -----
 We thank Zhao Han and Zheliang Zhu for testing z-Tran on various models and providing helpful user feedback.
+
+Copyright Notice
+-----
+To avoid misinterpretation about z-Tran's contributors, we have updated the software's copyright notice (see [startup.m](https://github.com/econdojo/ztran/blob/main/startup.m) and [LICENSE](https://github.com/econdojo/ztran/blob/main/LICENSE)) under the BSD 3-Clause "New" or "Revised" License. We thank Zhao Han for testing the software on various models and providing helpful user feedback. Nevertheless, Zhao Han played no role in developing the theory, algorithm, and code; therefore, he should <em>not</em> be interpreted as an author of the software or the original paper.
 
 References
 ---------------------
