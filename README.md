@@ -33,3 +33,9 @@ We thank Zhao Han and Zheliang Zhu for testing z-Tran on various models and prov
 Copyright Notice
 -----
 To avoid misinterpretation about z-Tran's contributors, we have updated the software's copyright notice (see [startup.m](https://github.com/econdojo/ztran/blob/main/startup.m) and [LICENSE](https://github.com/econdojo/ztran/blob/main/LICENSE)) under the BSD 3-Clause "New" or "Revised" License.
+
+References
+-----
+Tan, Fei and Wu, Jieran, z-Tran: MATLAB Software for Solving Dynamic Incomplete Information Models (December 1, 2022). Available at GitHub: https://github.com/econdojo/ztran
+
+Huo, Zhen and Pedroni, Marcelo, Dynamic Information Aggregation: Learning from the Past (August 1, 2020). Available at SSRN: https://ssrn.com/abstract=3687529 or http://dx.doi.org/10.2139/ssrn.3687529
