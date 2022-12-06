@@ -1,6 +1,6 @@
 Get Started with z-Tran
 ================
-z-Tran is a MATLAB toolbox that Fei Tan and Jieran Wu developed for implementing our analytic policy function iteration (APFI) algorithm&mdash;the algorithm that builds the algorithm for solving dynamic incomplete information models. All of the routines are coded in MATLAB as object-oriented programs. However, z-Tran does not require the user to have any prior knowledge of object-oriented programming. Indeed, it is quite intuitive to use as you will quickly realize when running our demo code. For any issue, suggestion or bug report, please send an email to [tanf [at] slu.edu](tanf@slu.edu).
+z-Tran is a MATLAB toolbox that Fei Tan and Jieran Wu developed for implementing our analytic policy function iteration (APFI) algorithm of the companion [paper](https://www.sciencedirect.com/science/article/abs/pii/S002205312100212X?via%3Dihub)&mdash;an algorithm that builds the algorithm for solving dynamic incomplete information models. All of the routines are coded in MATLAB as object-oriented programs. However, z-Tran does not require the user to have any prior knowledge of object-oriented programming. Indeed, it is quite intuitive to use as you will quickly realize when running our demo code. For any issue, suggestion or bug report, please send an email to [tanf [at] slu.edu](tanf@slu.edu).
 
 Toolbox Structure
 -----------------------------------
@@ -33,9 +33,3 @@ We thank Zhao Han and Zheliang Zhu for testing z-Tran on various models and prov
 Copyright Notice
 -----
 To avoid misinterpretation about z-Tran's contributors, we have updated the software's copyright notice (see [startup.m](https://github.com/econdojo/ztran/blob/main/startup.m) and [LICENSE](https://github.com/econdojo/ztran/blob/main/LICENSE)) under the BSD 3-Clause "New" or "Revised" License.
-
-References
----------------------
-Tan, F., and J. Wu (2021): “Analytic Policy Function Iteration,” *Journal of Economic Theory*.
-
-Huo, Z., and M. Pedroni (2020): “Dynamic Information Aggregation: Learning from the Past,” Working Paper.
