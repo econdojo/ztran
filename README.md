@@ -32,7 +32,7 @@ We thank Zhao Han and Zheliang Zhu for testing z-Tran on various models and prov
 
 Copyright Notice
 -----
-To avoid misinterpretation about z-Tran's contributors, we have updated the software's copyright notice (see [startup.m](https://github.com/econdojo/ztran/blob/main/startup.m) and [LICENSE](https://github.com/econdojo/ztran/blob/main/LICENSE)) under the BSD 3-Clause "New" or "Revised" License. Zhao Han played no role in developing the theory, algorithm, and code; therefore, he should <em>not</em> be interpreted as an author of the software or the original [paper](https://doi.org/10.1016/j.jet.2021.105395).
+To avoid misinterpretation about z-Tran's contributors, we have updated the software's copyright notice (see [startup.m](https://github.com/econdojo/ztran/blob/main/startup.m) and [LICENSE](https://github.com/econdojo/ztran/blob/main/LICENSE)) under the BSD 3-Clause "New" or "Revised" License.
 
 References
 ---------------------
