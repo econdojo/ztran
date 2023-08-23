@@ -1,5 +1,5 @@
 classdef varma
-% Class VARMA
+% Value class VARMA
 % Written by Fei Tan, Saint Louis University
 % Updated: September 30, 2020
 

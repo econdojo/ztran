@@ -184,7 +184,7 @@ m.V = V;
 m.agg = agg;
 m.sig = sig;
 
-m = solve(m,'dft',500,'crit',1e-8,'nit',{10,2000,10},'step',0.5,...
+m.solve('dft',500,'crit',1e-8,'nit',{10,2000,10},'step',0.5,...
     'arma', {4,4,false});
 
 % IRFs
@@ -197,7 +197,7 @@ figure('Name','IRF')
 for i = 1:ne
     imp = zeros(ne,T);
     imp(i,1) = -1;
-    res = irf(m.sol,imp);
+    res = m.sol.irf(imp);
     res(abs(res)<1e-5) = 0; 
     if ismember(i,setdiff(1:ne,agg{2}))
         res(agg{1},:) = 0;

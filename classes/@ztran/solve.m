@@ -1,9 +1,9 @@
-function obj = solve(obj,varargin)
+function solve(obj,varargin)
 % Function SOLVE
 %
 % Purpose:    Implement analytic policy function iteration (APFI) algorithm
 %
-% Format:     obj = solve(obj,varargin)
+% Format:     solve(obj,varargin)
 %
 % Input:      obj       initial ztran object
 %             varargin  (optional) string/value pair
@@ -16,10 +16,10 @@ function obj = solve(obj,varargin)
 %                       'arma'    - {AR order, MA order, reduction} ({5, 5, false})
 %                       'step'    - step size (1)
 %
-% Output:     obj       updated ztran object
+% Output:     none
 %
 % Written by Fei Tan, Saint Louis University
-% Updated: September 30, 2020
+% Updated: August 22, 2023
 
 %% -------------------------------------------
 %               APFI Algorithm

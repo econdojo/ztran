@@ -1,7 +1,7 @@
-classdef ztran
-% Class ZTRAN
+classdef ztran < handle
+% Handle class ZTRAN
 % Written by Fei Tan, Saint Louis University
-% Updated: September 30, 2020
+% Updated: August 22, 2023
 
     %% -------------------------------------------
     %                 Properties
@@ -28,7 +28,7 @@ classdef ztran
         sig        % {eqn_id, end_id, exo_id, ave_ex} - signal structure (cell)
     end
     
-    properties (GetAccess = public, SetAccess = private)
+    properties (GetAccess = public, SetAccess = protected)
         % Model solution
         apf        % {z(k), fz(:,:,k)} - analytic policy function (cell)
         sol        % varma object
@@ -55,70 +55,70 @@ classdef ztran
             obj.C = {zeros(ns)};
         end
         
-        function obj = set.Ax(obj,Ax)
+        function set.Ax(obj,Ax)
             if ~iscell(Ax) || isempty(Ax)
                 error('Ax must be non-empty cell array.')
             end
             obj.Ax = Ax;
         end
         
-        function obj = set.Aa(obj,Aa)
+        function set.Aa(obj,Aa)
             if ~iscell(Aa) || isempty(Aa)
                 error('Aa must be non-empty cell array.')
             end
             obj.Aa = Aa;
         end
         
-        function obj = set.As(obj,As)
+        function set.As(obj,As)
             if ~iscell(As) || isempty(As)
                 error('As must be non-empty cell array.')
             end
             obj.As = As;
         end
         
-        function obj = set.Bx(obj,Bx)
+        function set.Bx(obj,Bx)
             if ~iscell(Bx) || isempty(Bx)
                 error('Bx must be non-empty cell array.')
             end
             obj.Bx = Bx;
         end
         
-        function obj = set.Ba(obj,Ba)
+        function set.Ba(obj,Ba)
             if ~iscell(Ba) || isempty(Ba)
                 error('Ba must be non-empty cell array.')
             end
             obj.Ba = Ba;
         end
         
-        function obj = set.Bs(obj,Bs)
+        function set.Bs(obj,Bs)
             if ~iscell(Bs) || isempty(Bs)
                 error('Bs must be non-empty cell array.')
             end
             obj.Bs = Bs;
         end
         
-        function obj = set.C(obj,C)
+        function set.C(obj,C)
             if ~iscell(C) || isempty(C)
                 error('C must be non-empty cell array.')
             end
             obj.C = C;
         end
         
-        function obj = set.D(obj,D)
+        function set.D(obj,D)
             if ~iscell(D) || isempty(D)
                 error('D must be non-empty cell array.')
             end
             obj.D = D;
         end
         
-        function obj = set.agg(obj,agg)
+        function set.agg(obj,agg)
             if ~iscell(agg) || isempty(agg)
                 error('agg must be non-empty cell array.')
             end
             obj.agg = agg;
         end
         
-        function obj = set.sig(obj,sig)
+        function set.sig(obj,sig)
             if ~iscell(sig) || isempty(sig)
                 error('sig must be non-empty cell array.')
             end
@@ -126,6 +126,6 @@ classdef ztran
         end
         
         % Solve model
-        obj = solve(obj,varargin)
+        solve(obj,varargin)
     end
 end

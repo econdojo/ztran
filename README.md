@@ -4,7 +4,7 @@ z-Tran is a MATLAB toolbox that Fei Tan and Jieran Wu developed for implementing
 
 Toolbox Structure
 -----------------------------------
-z-Tran consists of two classes defined under the "classes" folder: @varma (for **varma** class) and @ztran (for **ztran** class).
+z-Tran consists of two classes defined under the "classes" folder: @varma (for **varma** value class) and @ztran (for **ztran** handle class).
 
 1. The class definition file **varma.m** encapsulates the VARMA processes and the operations performed on them via a VARMA-type object.
 
@@ -36,4 +36,4 @@ To avoid misinterpretation about z-Tran's contributors, we have updated the soft
 
 Suggested Citation
 -----
-Tan, Fei and Wu, Jieran, z-Tran: MATLAB Software for Solving Dynamic Incomplete Information Models (December 1, 2022). Available at GitHub: https://github.com/econdojo/ztran
+Tan, Fei and Wu, Jieran, z-Tran: MATLAB Software for Solving Dynamic Incomplete Information Models (August 22, 2023). Available at GitHub: https://github.com/econdojo/ztran

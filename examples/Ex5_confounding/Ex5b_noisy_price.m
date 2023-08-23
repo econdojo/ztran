@@ -95,7 +95,7 @@ m.V = V;
 m.agg = agg;
 m.sig = sig; 
 
-m = solve(m,'dft',1000,'crit',1e-8,'nit',{10,2000,10},'step',0.1,...
+m.solve('dft',1000,'crit',1e-8,'nit',{10,2000,10},'step',0.1,...
     'arma', {5,5,false});
 
 % IRF
@@ -107,7 +107,7 @@ figure('Name','IRF')
 for i = 1:ne
     imp = zeros(ne,T);
     imp(i,1) = 1;
-    res = irf(m.sol,imp);
+    res = m.sol.irf(imp);
     if i==eu
         res([xp_lag xzi],:) = 0;
     elseif i==ev
