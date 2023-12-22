@@ -1,5 +1,5 @@
 % This code solves a DSGE model with both rule-based monetary and fiscal
-% policies. See Section 5.1.2 of Han, Tan & Wu (2021): Analytic Policy
+% policies. See Section 5.1.2 of Tan & Wu (2021): Analytic Policy
 % Function Iteration.
 
 clear

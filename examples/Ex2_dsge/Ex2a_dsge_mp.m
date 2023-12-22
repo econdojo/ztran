@@ -1,4 +1,4 @@
-% This code solves a prototypical DSGE model in Section 5.1.1 of Han, Tan &
+% This code solves a prototypical DSGE model in Section 5.1.1 of Tan &
 % Wu (2021): Analytic Policy Function Iteration.
 
 clear

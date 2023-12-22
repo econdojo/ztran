@@ -1,5 +1,5 @@
 % This code solves a simple asset pricing model that permits an analytical
-% solution. See Section 2 of Han, Tan & Wu (2021): Analytic Policy Function
+% solution. See Section 2 of Tan & Wu (2021): Analytic Policy Function
 % Iteration.
 
 clear

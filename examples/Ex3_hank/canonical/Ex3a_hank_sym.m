@@ -1,5 +1,5 @@
 % This code solves a HANK model with symmetric incomplete information in
-% Section 5.2 of Han, Tan & Wu (2021): Analytic Policy Function Iteration.
+% Section 5.2 of Tan & Wu (2021): Analytic Policy Function Iteration.
 
 clear
 close all
